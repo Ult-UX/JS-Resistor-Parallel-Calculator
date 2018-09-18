@@ -76,7 +76,8 @@
 					</span>\
 				</div>\
 			</div>\
-		</div>';
+		</div>\
+		<p class="text-center">Resistor Parallel Calculator v1.0.1 Written and supported by UltAudio.net</p>';
     // 生成表单
     $(container).html(htmlTmp);
     // 根据要生成的条目数量添加 input
