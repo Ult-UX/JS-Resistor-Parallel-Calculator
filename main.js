@@ -1,7 +1,7 @@
 /*!
   * Resistor Parallel Calculator v1.0.1
   * Copyright 2018 UltAudio.net (http://ultaudio.net/)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * Licensed under MIT (https://github.com/Ult-UX/JS-Resistor-Parallel-Calculator/blob/master/LICENSE)
   */
 ; (function($, window, document, undefined) {
   // 创建插件，调用方式为 $('#calculator').ResistorParallelCalculator();
@@ -32,7 +32,8 @@
         var inputs = $(container).find('input[name="resistor"]');
         var resistors_arr = getResistor_arr(inputs);
         var result = 1 / resistors_arr.reduce(getSum);
-        $('#result').text(result);
+        // 输出结果，保留小数点后 4 位
+        $('#result').text(result.toFixed(4));
       });
     });
   }
@@ -57,18 +58,25 @@
   // 初始化插件，创建计算器表单
   function initialize(container, num, resistor_tmp) {
     // 基本表单模板
-    var htmlTmp = '  <div id="resistors">\
-  </div>\
-  <div class="form-group">\
-    <button type="button" id="appendTrigger" class="btn btn-primary">\
-      Add a Resistor\
-    </button>\
-    <span class="text-primary">\
-      请务必保证所输入的数值单位统一。\
-    </span>\
-    <h2 id="result">\
-    </h2>\
-  </div>';
+    var htmlTmp = '\
+		<div class="row">\
+			<div class="col-md-4 col-md-offset-1">\
+				<h2>计算结果：</h2>\
+				<h2 id="result"></h2>\
+			</div>\
+			<div class="col-md-6">\
+				<div id="resistors">\
+				</div>\
+				<div class="form-group">\
+					<button type="button" id="appendTrigger" class="btn btn-primary">\
+						Add a Resistor\
+					</button>\
+					<span class="text-primary">\
+						请务必保证所输入的数值单位统一。\
+					</span>\
+				</div>\
+			</div>\
+		</div>';
     // 生成表单
     $(container).html(htmlTmp);
     // 根据要生成的条目数量添加 input
